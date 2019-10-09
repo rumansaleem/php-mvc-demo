@@ -1,0 +1,13 @@
+{
+    "name": "rumansaleem/php-mvc-demo",
+    "description": "\"A demonstration project for mvc application in core PHP\"",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ruman Saleem",
+            "email": "ruman63@gmail.com"
+        }
+    ],
+    "require": {}
+}
