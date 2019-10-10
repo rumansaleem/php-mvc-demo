@@ -1,7 +1,4 @@
-<?php
-    $title = 'Sign Up';
-    require_once __DIR__ . '/_partials/head.php';
-?>
+<?php view('_partials.head', ['title' => 'Sign Up']); ?>
 <h1>Sign Up</h1>
 <form action="/signup" method="POST">
     <div style="margin-bottom: .5rem;">
@@ -29,4 +26,4 @@
     </div> 
 </form>
 
-<?php require_once __DIR__ . '/_partials/footer.php'; ?>
+<?php view('_partials.footer'); ?>

@@ -1,4 +1,4 @@
 <?php
 
-require __DIR__ . '/../../views/about.view.php';
+return view('about');
 

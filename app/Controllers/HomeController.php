@@ -14,4 +14,4 @@
 
     $posts = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 
-    require __DIR__ . '/../../views/home.view.php';
+    return view('home', compact('posts'));

@@ -1,5 +1,4 @@
-<?php $title = 'Home'; ?>
-<?php require_once __DIR__ . '/_partials/head.php'; ?>
+<?php view ('_partials.head', ['title' => 'Home']); ?>
 
 <h2>Posts</h2>
 <p>We currently have <?= count($posts) ?> post<?= count($posts) == 1 ? '' : 's' ?>.</p>
@@ -38,4 +37,4 @@
     <p>Please <a href="/login">login</a> to create a new post</p>
 <?php endif; ?>
 
-<?php require_once __DIR__ . '/_partials/footer.php'; ?>
+<?php view('_partials.footer'); ?>

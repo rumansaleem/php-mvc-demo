@@ -1,7 +1,4 @@
-<?php 
-    $title = 'Contact Us';
-    require_once __DIR__ . '/_partials/head.php'; 
-?>
+<?php view('_partials.head', ['title' => 'Contact Us']); ?>
 
 <h1>Contact Us</h1>
 <p> We would love to hear from you. You can contact us at: </p>
@@ -10,4 +7,4 @@
     <b>Phone:</b> +91-8907654321 <br>
 </p>
 
-<?php require_once __DIR__ . '/_partials/footer.php'; ?>
+<?php view('_partials.footer'); ?>

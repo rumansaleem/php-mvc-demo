@@ -37,3 +37,15 @@ function authenticatedUser() {
 
     return $statement->get_result()->fetch_assoc();
 }
+
+/**
+ * Loads the view with given data.
+ *
+ * @param string $view
+ * @param array $data
+ * @return void
+ */
+function view($view, $data = []) {
+    extract($data);
+    require __DIR__ . '/../views/' . str_replace('.', '/', $view) . '.view.php';
+}

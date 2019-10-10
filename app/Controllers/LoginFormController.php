@@ -1,3 +1,3 @@
 <?php
 
-require __DIR__ . '/../../views/login.view.php';
+return view('login');
