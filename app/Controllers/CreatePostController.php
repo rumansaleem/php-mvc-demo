@@ -1,7 +1,7 @@
 <?php
 
     if (!isSignedIn()) {
-        header('Location: /');
+        return redirect('/');
     }
 
     $title = trim($_POST['title']);
@@ -14,4 +14,4 @@
 
     $statement->execute();
 
-    header('Location: /');
+    return redirect('/');

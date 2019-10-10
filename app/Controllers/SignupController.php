@@ -25,4 +25,4 @@
 
     $_SESSION['auth'] = $user_id;
 
-    header("Location: /");
+    return redirect('/');

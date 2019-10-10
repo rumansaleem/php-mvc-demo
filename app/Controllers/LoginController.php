@@ -23,5 +23,5 @@
         $_SESSION['auth'] = $user['id'];
     }
 
-    header("Location: /");
+    return redirect('/');
     
