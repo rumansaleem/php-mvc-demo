@@ -1,15 +1,12 @@
 <?php
-    $title = "Store Post";
-    require_once __DIR__ . '/../../_partials/head.php';
+    require_once __DIR__ . '/../../bootstrap.php';
 
-    if ($_SERVER['REQUEST_METHOD'] != 'POST' || !array_key_exists('auth', $_SESSION)) {
+    if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isSignedIn()) {
         header('Location: /');
     }
 
     $title = trim($_POST['title']);
     $content = trim($_POST['content']);
-
-    $db = require_once __DIR__ . '/../../database.php';
 
     $query = "INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?);";
 

@@ -1,9 +1,6 @@
 <?php
-    $title = 'Login';
-    require_once __DIR__ . '/../_partials/head.php';
-?>
 
-<?php
+require_once __DIR__ . '/../bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = trim($_POST['email']);
@@ -11,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $query = "SELECT id, password FROM users WHERE email = ? LIMIT 1";
     
-    $db = require_once __DIR__ . '/../database.php';
     $statement = $db->prepare($query);
 
     if($statement === false) {
@@ -34,6 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
+<?php
+    $title = 'Login';
+    require_once __DIR__ . '/../_partials/head.php';
+?>
 <h1>Login</h1>
 <form action="/login.php" method="POST">
 

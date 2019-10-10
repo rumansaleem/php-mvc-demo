@@ -21,9 +21,10 @@ We will be building a small blog called *Equinox*. It will include CRUD operatio
 
 ## Hands On - Step By Step
 - [x] Guest can view all posts
-- [ ] Refactor views into partials 
-- [ ] User can login/signup
-- [ ] User can create a post
+- [x] Refactor views into partials 
+- [x] User can login/signup
+- [x] User can create a post
+- [ ] Start refactoring to MVC
 - [ ] User can edit his own post
 - [ ] User can delete his own post
 - [ ] User can comment on any post

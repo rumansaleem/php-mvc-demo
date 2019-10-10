@@ -1,9 +1,6 @@
-<?php
-    $title = 'Sign Up';
-    require_once __DIR__ . '/../_partials/head.php';
-?>
+<?php 
 
-<?php
+require_once __DIR__ . '/../bootstrap.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $name = trim($_POST['name']);
@@ -12,11 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $confirm_password = trim($_POST['confirm_password']);
 
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-
     
     $query = "INSERT INTO users( name, email, password ) VALUES (?, ?, ?)";
     
-    $db = require_once __DIR__ . '/../database.php';
     $statement = $db->prepare($query);
 
     if($statement === false) {
@@ -37,6 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 ?>
 
+<?php
+    $title = 'Sign Up';
+    require_once __DIR__ . '/../_partials/head.php';
+?>
 <h1>Sign Up</h1>
 <form action="/signup.php" method="POST">
     <div style="margin-bottom: .5rem;">

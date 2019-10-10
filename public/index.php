@@ -1,11 +1,6 @@
-<?php 
-    $title = 'Home';
-    require_once __DIR__ . '/../_partials/head.php'; 
-?>
-
 <?php
-    $db = require_once __DIR__ . '/../database.php';
-    
+    require_once __DIR__ . '/../bootstrap.php';
+
     $query = 'SELECT posts.*, users.name as  author_name FROM posts INNER JOIN users ON author_id = users.id;';
     
     $statement = $db->prepare($query);
@@ -21,6 +16,11 @@
     $posts = $statement->get_result()->fetch_all(MYSQLI_ASSOC);
 ?>
 
+
+<?php 
+    $title = 'Home';
+    require_once __DIR__ . '/../_partials/head.php'; 
+?>
 <h2>Posts</h2>
 <p>We currently have <?= count($posts) ?> post<?= count($posts) == 1 ? '' : 's' ?>.</p>
 
@@ -36,7 +36,7 @@
 
 <hr>
 
-<?php if(array_key_exists('auth', $_SESSION)): ?>
+<?php if (isSignedIn()): ?>
     <h3>Create New Post</h3>
     <form action="/posts/store.php" method="POST">
 
