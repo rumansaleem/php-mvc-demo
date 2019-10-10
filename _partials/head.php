@@ -1,6 +1,7 @@
 <?php
     ini_set('display_errors', "on");
     error_reporting(E_ALL);
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +21,16 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/about.php">About Us</a></li>
                 <li><a href="/contact.php">Contact Us</a></li>
+                <?php if(!array_key_exists('auth', $_SESSION)): ?>
+                    <li><a href="/signup.php">Sign Up</a> / <a href="/login.php">Log In</a></li>
+                <?php else: ?>
+                    <li>
+                        <form action="/logout.php" method="POST">
+                            You are Logged In
+                            <button type="submit">Logout</button>
+                        </form>
+                    </li>
+                <?php endif; ?>
             </ul>
         </nav>
     </header>
