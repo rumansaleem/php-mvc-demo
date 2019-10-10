@@ -1,7 +1,6 @@
 <?php
-    require_once __DIR__ . '/../../bootstrap.php';
 
-    if ($_SERVER['REQUEST_METHOD'] != 'POST' || !isSignedIn()) {
+    if (!isSignedIn()) {
         header('Location: /');
     }
 
@@ -13,9 +12,6 @@
     $statement = $db->prepare($query);
     $statement->bind_param('ssi', $title, $content, $_SESSION['auth']);
 
-    if ($statement->execute()) {
-        header('Location: /');
-    }
+    $statement->execute();
 
-    echo "ERORR: {$statement->error}";
-?>
+    header('Location: /');

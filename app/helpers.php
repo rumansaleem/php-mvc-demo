@@ -1,5 +1,12 @@
 <?php
 
+
+function dump($value) {
+    echo '<pre>';
+    print_r($value);
+    echo '</pre>';
+}
+
 /**
  * Returns true if the user is signed in or else returns false.
  *

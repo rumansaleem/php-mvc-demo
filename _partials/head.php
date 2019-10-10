@@ -13,13 +13,13 @@
         <nav>
             <ul>
                 <li><a href="/">Home</a></li>
-                <li><a href="/about.php">About Us</a></li>
-                <li><a href="/contact.php">Contact Us</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
                 <?php if (! isSignedIn()): ?>
-                    <li><a href="/signup.php">Sign Up</a> / <a href="/login.php">Log In</a></li>
+                    <li><a href="/signup">Sign Up</a> / <a href="/login">Log In</a></li>
                 <?php else: ?>
                     <li>
-                        <form action="/logout.php" method="POST">
+                        <form action="/logout" method="POST">
                             <em><?= authenticatedUser()['name'] ?></em>
                             <button type="submit">Logout</button>
                         </form>

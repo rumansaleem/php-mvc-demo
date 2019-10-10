@@ -1,43 +1,9 @@
-<?php 
-
-require_once __DIR__ . '/../bootstrap.php';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = trim($_POST['name']);
-    $email = trim($_POST['email']);
-    $password = trim($_POST['password']);
-    $confirm_password = trim($_POST['confirm_password']);
-
-    $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-    
-    $query = "INSERT INTO users( name, email, password ) VALUES (?, ?, ?)";
-    
-    $statement = $db->prepare($query);
-
-    if($statement === false) {
-        printf("SQL Error: %s", $db->error);
-    }
-
-    $statement->bind_param('sss', $name, $email, $hashed_password);
-    
-    if ($statement->execute() === false) {
-        printf("SQL Error: %s", $statement->error);
-    }
-
-    $user_id = $statement->insert_id;
-
-    $_SESSION['auth'] = $user_id;
-
-    header("Location: /");
-}
-?>
-
 <?php
     $title = 'Sign Up';
-    require_once __DIR__ . '/../_partials/head.php';
+    require_once __DIR__ . '/../../_partials/head.php';
 ?>
 <h1>Sign Up</h1>
-<form action="/signup.php" method="POST">
+<form action="/signup" method="POST">
     <div style="margin-bottom: .5rem;">
         <label style="display: block" for="name">Full Name:</label>
         <input id="name" name="name" type="text" placeholder="e.g. John Doe" style="min-width: 33.33%;">
@@ -63,4 +29,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div> 
 </form>
 
-<?php require_once __DIR__ . '/../_partials/footer.php'; ?>
+<?php require_once __DIR__ . '/../../_partials/footer.php'; ?>

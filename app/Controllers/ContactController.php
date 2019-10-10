@@ -1,7 +1,6 @@
-<?php require_once __DIR__ . '/../bootstrap.php'; ?>
 <?php 
     $title = 'Contact Us';
-    require_once __DIR__ . '/../_partials/head.php'; 
+    require_once __DIR__ . '/../../_partials/head.php'; 
 ?>
 
 <h1>Contact Us</h1>
@@ -11,4 +10,4 @@
     <b>Phone:</b> +91-8907654321 <br>
 </p>
 
-<?php require_once __DIR__ . '/../_partials/footer.php'; ?>
+<?php require_once __DIR__ . '/../../_partials/footer.php'; ?>
