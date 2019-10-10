@@ -6,7 +6,9 @@
 <?php
     $db = require_once __DIR__ . '/../database.php';
     
-    $statement = $db->prepare('SELECT * FROM posts');
+    $query = 'SELECT posts.*, users.name as  author_name FROM posts INNER JOIN users ON author_id = users.id;';
+    
+    $statement = $db->prepare($query);
 
     if($statement === false) {
         die('<b>SQLError: </b>' . $db->error);
@@ -24,11 +26,36 @@
 
 <div style="margin-top: 4rem;">
     <?php foreach($posts as  $post): ?>
-        <div style="margin: 2rem 0;">
+        <div style="margin: 4rem 0;">
             <h3><?= $post['title'] ?></h3>
             <p><?= $post['content'] ?></p>
+            <p>Posted By: <em class="author"><?= $post['author_name'] ?? 'Anonymous' ?></em></p>
         </div>
     <?php endforeach; ?>
 </div>
+
+<hr>
+
+<?php if(array_key_exists('auth', $_SESSION)): ?>
+    <h3>Create New Post</h3>
+    <form action="/posts/store.php" method="POST">
+
+        <div style="margin-bottom: .5rem;">
+            <label style="display: block" for="title">Title</label>
+            <input id="title" name="title" type="text" placeholder="Give your post a catchy title." style="min-width: 33.33%;">
+        </div>
+
+        <div style="margin-bottom: .5rem;">
+            <label style="display: block" for="content">Content</label>
+            <textarea id="content" name="content" rows="10" style="min-width: 33.33%;" placeholder="Write your masterpiece here..."></textarea>
+        </div>
+
+        <div style="margin-bottom: .5rem;">
+            <button type="submit">Publish</button>
+        </div> 
+    </form>
+<?php else: ?>
+    <p>Please <a href="/login.php">login</a> to create new post</p>
+<?php endif; ?>
 
 <?php require_once __DIR__ . '/../_partials/footer.php'; ?>
