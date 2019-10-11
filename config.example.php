@@ -3,7 +3,7 @@
 return [
     'database' => [
         'host' => 'localhost',
-        'user' => 'root',
+        'username' => 'root',
         'password' => '',
         'database' => 'equinox',
         'port' => '3306'

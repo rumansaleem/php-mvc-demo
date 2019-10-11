@@ -10,14 +10,16 @@ class PostController extends Controller
     
         $title = trim($_POST['title']);
         $content = trim($_POST['content']);
+        $author_id = $_SESSION['auth'];
     
-        $query = "INSERT INTO posts (title, content, author_id) VALUES (?, ?, ?);";
+        $query = "INSERT INTO posts (title, content, author_id) VALUES (:title, :content, :author_id)";
     
-        $statement = $this->db->prepare($query);
-        $statement->bind_param('ssi', $title, $content, $_SESSION['auth']);
-    
-        $statement->execute();
-    
+        Database::getInstance()->execute($query, [
+            'title' => $title,
+            'content' => $content,
+            'author_id' => $author_id,
+        ]);
+
         return redirect('/');
     }
 }

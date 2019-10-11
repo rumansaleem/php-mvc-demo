@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../app/bootstrap.php';
 
-require_once __DIR__ . '/../app/database.php';
+require_once __DIR__ . '/../app/Database.php';
 require_once __DIR__ . '/../app/helpers.php';
 
 require_once __DIR__ . '/../app/Controllers/Controller.php';
@@ -40,7 +40,7 @@ if (!array_key_exists($path, $routes[$requestMethod])) {
 $controllerName = explode('@', $routes[$requestMethod][$path])[0];
 $methodName = explode('@', $routes[$requestMethod][$path])[1];
 
-$controller = new $controllerName($db);
+$controller = new $controllerName();
 
 $response = $controller->{$methodName}();
 

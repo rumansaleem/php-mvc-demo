@@ -2,10 +2,8 @@
 
 abstract class Controller
 {
-    protected $db;
-
-    public function __construct($db)
+    public function __construct()
     {
-        $this->db = $db;
+        
     }
 }

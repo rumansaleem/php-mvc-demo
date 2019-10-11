@@ -27,15 +27,13 @@ function authenticatedUser() {
         return null;
     }
 
-    $sql = 'SELECT id, name, email from users WHERE id = ? LIMIT 1';
-    
-    $db = require __DIR__ . '/database.php';
-    
-    $statement = $db->prepare($sql);
-    $statement->bind_param('i', $_SESSION['auth']);
-    $statement->execute();
+    $query = 'SELECT id, name, email from users WHERE id = :user_id LIMIT 1';
 
-    return $statement->get_result()->fetch_assoc();
+    $statement = Database::getInstance()->execute($query, ['user_id' => $_SESSION['auth']]);
+    $user = $statement->fetch(PDO::FETCH_ASSOC);
+    $statement->closeCursor();
+    
+    return $user;
 }
 
 /**
