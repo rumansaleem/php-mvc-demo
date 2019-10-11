@@ -30,7 +30,7 @@ We will be building a small blog called *Equinox*. It will include CRUD operatio
     - [x] Refactor Database class
     - [x] Refactor Router class
     - [x] Refactor Request class
-    - [ ] Make a QueryBuilder class
+    - [x] use QueryBuilder class
     - [ ] Refactor Session class
     - [ ] Refactor Auth class
 
