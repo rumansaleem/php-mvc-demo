@@ -1,27 +1,44 @@
 <?php
 
-    $email = trim($_POST['email']);
-    $input_password = trim($_POST['password']);
+class LoginController
+{
+    protected $db;
 
-    $query = "SELECT id, password FROM users WHERE email = ? LIMIT 1";
-    
-    $statement = $db->prepare($query);
-
-    if($statement === false) {
-        printf("SQL Error: %s", $db->error);
+    public function __construct($db)
+    {
+        $this->db = $db;
     }
 
-    $statement->bind_param('s', $email);
-    
-    if ($statement->execute() === false) {
-        printf("SQL Error: %s", $statement->error);
+    public function showLoginForm()
+    {
+        return view('login');
     }
 
-    $user = $statement->get_result()->fetch_assoc();
+    public function login()
+    {
+        $email = trim($_POST['email']);
+        $input_password = trim($_POST['password']);
 
-    if(password_verify($input_password, $user['password'])) {
-        $_SESSION['auth'] = $user['id'];
+        $query = "SELECT id, password FROM users WHERE email = ? LIMIT 1";
+        
+        $statement = $this->db->prepare($query);
+
+        if ($statement === false) {
+            printf("SQL Error: %s", $this->db->error);
+        }
+
+        $statement->bind_param('s', $email);
+        
+        if ($statement->execute() === false) {
+            printf("SQL Error: %s", $statement->error);
+        }
+
+        $user = $statement->get_result()->fetch_assoc();
+
+        if (password_verify($input_password, $user['password'])) {
+            $_SESSION['auth'] = $user['id'];
+        }
+
+        return redirect('/');
     }
-
-    return redirect('/');
-    
+} 

@@ -4,20 +4,25 @@ require_once __DIR__ . '/../app/bootstrap.php';
 
 require_once __DIR__ . '/../app/database.php';
 require_once __DIR__ . '/../app/helpers.php';
+require_once __DIR__ . '/../app/Controllers/PagesController.php';
+require_once __DIR__ . '/../app/Controllers/LoginController.php';
+require_once __DIR__ . '/../app/Controllers/LogoutController.php';
+require_once __DIR__ . '/../app/Controllers/SignupController.php';
+require_once __DIR__ . '/../app/Controllers/PostController.php';
 
 $routes = [
     'GET' => [
-        '/' => 'HomeController',
-        '/about' => 'AboutController',
-        '/contact' => 'ContactController',
-        '/login' => 'LoginFormController',
-        '/signup' => 'SignupFormController',
+        '/' => 'PagesController@home',
+        '/about' => 'PagesController@about',
+        '/contact' => 'PagesController@contact',
+        '/login' => 'LoginController@showLoginForm',
+        '/signup' => 'SignupController@showSignupForm',
     ],
     'POST' => [
-        '/login' => 'LoginController',
-        '/signup' => 'SignupController',
-        '/logout' => 'LogoutController',
-        '/posts' => 'CreatePostController',
+        '/login' => 'LoginController@login',
+        '/signup' => 'SignupController@signup',
+        '/logout' => 'LogoutController@logout',
+        '/posts' => 'PostController@store',
     ]
 ];
 
@@ -30,6 +35,11 @@ if (!array_key_exists($path, $routes[$requestMethod])) {
     return;
 }
 
-$controller = $routes[$requestMethod][$path];
+$controllerName = explode('@', $routes[$requestMethod][$path])[0];
+$methodName = explode('@', $routes[$requestMethod][$path])[1];
 
-require __DIR__ . "/../app/Controllers/{$controller}.php";
+$controller = new $controllerName($db);
+
+$response = $controller->{$methodName}();
+
+return $response;

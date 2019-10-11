@@ -1,4 +1,11 @@
-<?php 
-    session_destroy();
-    
-    return redirect('/');
+<?php
+
+class LogoutController 
+{
+    public function logout()
+    {
+        session_destroy();
+        
+        return redirect('/');
+    }
+}
