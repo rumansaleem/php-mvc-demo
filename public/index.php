@@ -4,6 +4,8 @@ require_once __DIR__ . '/../app/bootstrap.php';
 
 require_once __DIR__ . '/../app/database.php';
 require_once __DIR__ . '/../app/helpers.php';
+
+require_once __DIR__ . '/../app/Controllers/Controller.php';
 require_once __DIR__ . '/../app/Controllers/PagesController.php';
 require_once __DIR__ . '/../app/Controllers/LoginController.php';
 require_once __DIR__ . '/../app/Controllers/LogoutController.php';

@@ -1,14 +1,7 @@
 <?php
 
-class PostController
+class PostController extends Controller
 {
-    protected $db;
-
-    public function __construct($db)
-    {
-        $this->db = $db;
-    }
-
     public function store()
     {
         if (!isSignedIn()) {

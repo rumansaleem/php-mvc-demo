@@ -1,14 +1,7 @@
 <?php
 
-class SignupController
+class SignupController extends Controller
 {
-    protected $db;
-
-    public function __construct($db)
-    {
-        $this->db = $db;
-    }
-
     public function showSignupForm()
     {
         return view('signup');

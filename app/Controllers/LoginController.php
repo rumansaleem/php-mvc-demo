@@ -1,14 +1,7 @@
 <?php
 
-class LoginController
+class LoginController extends Controller
 {
-    protected $db;
-
-    public function __construct($db)
-    {
-        $this->db = $db;
-    }
-
     public function showLoginForm()
     {
         return view('login');

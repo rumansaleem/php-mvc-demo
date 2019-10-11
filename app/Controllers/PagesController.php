@@ -1,14 +1,7 @@
 <?php
 
-class PagesController 
+class PagesController extends Controller
 {
-    protected $db;
-
-    public function __construct($db)
-    {
-        $this->db = $db;
-    }
-
     public function home() {
         $query = 'SELECT posts.*, users.name as  author_name FROM posts INNER JOIN users ON author_id = users.id;';
     
