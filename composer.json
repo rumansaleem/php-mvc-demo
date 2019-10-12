@@ -9,5 +9,9 @@
             "email": "ruman63@gmail.com"
         }
     ],
-    "require": {}
+    "require": {},
+    "autoload": {
+        "classmap": ["app/"],
+        "files": ["app/helpers.php"]
+    }
 }
