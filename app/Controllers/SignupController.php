@@ -19,7 +19,7 @@ class SignupController extends Controller
             'password' => $hashed_password,
         ]);
         
-        $_SESSION['auth'] = $user_id;
+        Auth::login($user_id);
     
         return redirect('/');
     }

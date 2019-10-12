@@ -15,12 +15,12 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact Us</a></li>
-                <?php if (! isSignedIn()): ?>
+                <?php if (Auth::guest()): ?>
                     <li><a href="/signup">Sign Up</a> / <a href="/login">Log In</a></li>
                 <?php else: ?>
                     <li>
                         <form action="/logout" method="POST">
-                            <em><?= authenticatedUser()['name'] ?></em>
+                            <em><?= Auth::user()['name'] ?></em>
                             <button type="submit">Logout</button>
                         </form>
                     </li>

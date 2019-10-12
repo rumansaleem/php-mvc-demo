@@ -15,7 +15,7 @@ class LoginController extends Controller
             ->first();
 
         if (password_verify($request->post('password'), $user['password'])) {
-            $_SESSION['auth'] = $user['id'];
+            Auth::login($user);
         }
 
         return redirect('/');

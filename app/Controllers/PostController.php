@@ -4,7 +4,7 @@ class PostController extends Controller
 {
     public function store($request)
     {
-        if (!isSignedIn()) {
+        if (Auth::guest()) {
             return redirect('/');
         }
     

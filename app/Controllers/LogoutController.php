@@ -4,7 +4,7 @@ class LogoutController extends Controller
 {
     public function logout()
     {
-        session_destroy();
+        Auth::logout();
         
         return redirect('/');
     }

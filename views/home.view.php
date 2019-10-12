@@ -15,7 +15,7 @@
 
 <hr>
 
-<?php if (isSignedIn()): ?>
+<?php if (Auth::loggedIn()): ?>
     <h2>Create New Post</h2>
     <form action="/posts" method="POST">
 

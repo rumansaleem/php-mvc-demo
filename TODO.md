@@ -24,16 +24,19 @@ We will be building a small blog called *Equinox*. It will include CRUD operatio
 - [x] Refactor views into partials 
 - [x] User can login/signup
 - [x] User can create a post
-- [ ] Start refactoring to MVC
+- [x] Start refactoring to MVC
     - [x] Refactor Controllers
     - [x] Refactor Views
     - [x] Refactor Database class
     - [x] Refactor Router class
     - [x] Refactor Request class
     - [x] use QueryBuilder class
-    - [ ] Refactor Session class
-    - [ ] Refactor Auth class
+- [x] Refactor Auth class
+- [ ] Autoload classes
+- [ ] Namespace classes and use PSR-4 autoloading
+- [ ] Application Container class
 
+## Tasks
 - [ ] User can edit his own post
 - [ ] User can delete his own post
 - [ ] User can comment on any post
