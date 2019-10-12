@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../app/bootstrap.php';
 
+require_once __DIR__ . '/../app/Request.php';
 require_once __DIR__ . '/../app/Router.php';
 require_once __DIR__ . '/../app/Database.php';
 require_once __DIR__ . '/../app/helpers.php';
@@ -14,9 +15,10 @@ require_once __DIR__ . '/../app/Controllers/SignupController.php';
 require_once __DIR__ . '/../app/Controllers/PostController.php';
 
 $router = Router::getInstance();
+$request = Request::createFromGlobals();
 
 $router->loadRoutesFrom(__DIR__ . '/../routes.php');
 
-$response = $router->handle();
+$response = $router->handle($request);
 
 return $response;

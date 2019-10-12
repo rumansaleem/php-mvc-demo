@@ -7,21 +7,18 @@ class SignupController extends Controller
         return view('signup');
     }
 
-    public function signup() 
+    public function signup($request) 
     {
-        $name = trim($_POST['name']);
-        $email = trim($_POST['email']);
-        $password = trim($_POST['password']);
-        $confirm_password = trim($_POST['confirm_password']);
+        $confirm_password = $request->post('confirm_password');
     
-        $hashed_password = password_hash($password, PASSWORD_BCRYPT);
+        $hashed_password = password_hash($request->post('password'), PASSWORD_BCRYPT);
         
         $db = Database::getInstance();
         $query = "INSERT INTO users( name, email, password ) VALUES (:name, :email, :password)";
 
         $db->execute($query, [
-            'name' => $name,
-            'email' => $email,
+            'name' => $request->post('name'),
+            'email' => $request->post('email'),
             'password' => $hashed_password
         ]);
     

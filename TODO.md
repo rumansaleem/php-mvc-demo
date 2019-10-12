@@ -25,6 +25,15 @@ We will be building a small blog called *Equinox*. It will include CRUD operatio
 - [x] User can login/signup
 - [x] User can create a post
 - [ ] Start refactoring to MVC
+    - [x] Refactor Controllers
+    - [x] Refactor Views
+    - [x] Refactor Database class
+    - [x] Refactor Router class
+    - [x] Refactor Request class
+    - [ ] Make a QueryBuilder class
+    - [ ] Refactor Session class
+    - [ ] Refactor Auth class
+
 - [ ] User can edit his own post
 - [ ] User can delete his own post
 - [ ] User can comment on any post

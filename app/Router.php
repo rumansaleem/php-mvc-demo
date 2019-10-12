@@ -54,24 +54,23 @@ class Router
         $this->routes['POST'][$uri] = $action;
     }
 
-    public function handle()
+    public function handle($request)
     {
-        $requestMethod = strtoupper($_SERVER['REQUEST_METHOD']);
-        $requestPath = '/' . trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $routes = $this->routes[$request->method()];
 
-        if (! array_key_exists($requestPath, $this->routes[$requestMethod])) {
+        if (! array_key_exists($request->path(), $routes)) {
             http_response_code(404);
             echo "<h1>404! Not Found</h1>";
             return;
         }
         
-        $action = $this->routes[$requestMethod][$requestPath];
+        $action = $routes[$request->path()];
 
         $controllerName = explode('@', $action)[0];
         $methodName = explode('@', $action)[1];
 
         $controller = new $controllerName();
 
-        return $controller->{$methodName}();
+        return $controller->{$methodName}($request);
     }
 }
