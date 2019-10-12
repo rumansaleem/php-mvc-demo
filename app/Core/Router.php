@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class Router
 {
     private static $instance;
@@ -66,10 +68,10 @@ class Router
         
         $action = $routes[$request->path()];
 
-        $controllerName = explode('@', $action)[0];
+        $controllerFQCN = "\\App\\Controllers\\" . explode('@', $action)[0];
         $methodName = explode('@', $action)[1];
 
-        $controller = new $controllerName();
+        $controller = new $controllerFQCN();
 
         return $controller->{$methodName}($request);
     }

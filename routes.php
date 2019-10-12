@@ -1,5 +1,7 @@
 <?php
 
+use App\Core\Router;
+
 Router::route('GET', '/', 'PagesController@home');
 Router::route('GET', '/about', 'PagesController@about');
 Router::route('GET', '/contact', 'PagesController@contact');

@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Core\Database;
+
 class PagesController extends Controller
 {
     public function home() 

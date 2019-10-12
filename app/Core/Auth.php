@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class Auth
 {
     const AUTH_SESSION_KEY = 'auth';

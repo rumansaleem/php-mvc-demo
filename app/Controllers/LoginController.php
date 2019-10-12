@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Core\Database;
+use App\Core\Auth;
+
 class LoginController extends Controller
 {
     public function showLoginForm()

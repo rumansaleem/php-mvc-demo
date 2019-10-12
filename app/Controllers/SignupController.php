@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controllers;
+
+use App\Core\Database;
+use App\Core\Auth;
+
 class SignupController extends Controller
 {
     public function showSignupForm()

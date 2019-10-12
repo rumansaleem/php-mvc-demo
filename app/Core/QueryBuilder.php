@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Core;
+
 class QueryBuilder
 {
     protected $db;
@@ -76,13 +78,13 @@ class QueryBuilder
     public function all()
     {
         return $this->db->execute($this->toSQL(), $this->params)
-            ->fetchAll(PDO::FETCH_ASSOC);
+            ->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function first()
     {
         $statement = $this->db->execute($this->toSQL(), $this->params);
-        $result = $statement->fetch(PDO::FETCH_ASSOC);
+        $result = $statement->fetch(\PDO::FETCH_ASSOC);
         $statement->closeCursor();
         
         return $result;
