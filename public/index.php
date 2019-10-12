@@ -12,21 +12,7 @@ require_once __DIR__ . '/../app/Controllers/LogoutController.php';
 require_once __DIR__ . '/../app/Controllers/SignupController.php';
 require_once __DIR__ . '/../app/Controllers/PostController.php';
 
-$routes = [
-    'GET' => [
-        '/' => 'PagesController@home',
-        '/about' => 'PagesController@about',
-        '/contact' => 'PagesController@contact',
-        '/login' => 'LoginController@showLoginForm',
-        '/signup' => 'SignupController@showSignupForm',
-    ],
-    'POST' => [
-        '/login' => 'LoginController@login',
-        '/signup' => 'SignupController@signup',
-        '/logout' => 'LogoutController@logout',
-        '/posts' => 'PostController@store',
-    ]
-];
+$routes = require __DIR__ . '/../routes.php';
 
 $requestMethod = $_SERVER['REQUEST_METHOD'];
 $path = '/' . trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
