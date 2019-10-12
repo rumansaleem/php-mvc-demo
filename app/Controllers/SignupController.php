@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Core\Database;
 use App\Core\Auth;
 
 class SignupController extends Controller
@@ -18,7 +17,7 @@ class SignupController extends Controller
     
         $hashed_password = password_hash($request->post('password'), PASSWORD_BCRYPT);
         
-        $user_id = Database::table('users')->insert([
+        $user_id = $this->builder->table('users')->insert([
             'name' => $request->post('name'),
             'email' => $request->post('email'),
             'password' => $hashed_password,

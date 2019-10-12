@@ -32,9 +32,9 @@ We will be building a small blog called *Equinox*. It will include CRUD operatio
     - [x] Refactor Request class
     - [x] use QueryBuilder class
 - [x] Refactor Auth class
-- [ ] Autoload classes
-- [ ] Namespace classes and use PSR-4 autoloading
-- [ ] Application Container class
+- [x] Autoload classes
+- [x] Namespace classes and use PSR-4 autoloading
+- [x] Application Container class
 
 ## Tasks
 - [ ] User can edit his own post

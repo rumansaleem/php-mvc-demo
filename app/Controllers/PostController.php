@@ -13,7 +13,7 @@ class PostController extends Controller
             return redirect('/');
         }
     
-        Database::table('posts')->insert([
+        $this->builder->table('posts')->insert([
             'title' => $request->post('title'),
             'content' => $request->post('content'),
             'author_id' => $_SESSION['auth'],

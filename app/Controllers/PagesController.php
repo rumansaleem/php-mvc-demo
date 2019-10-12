@@ -2,13 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Core\Database;
-
 class PagesController extends Controller
 {
     public function home() 
     {
-        $posts = Database::table('posts')
+        $posts = $this->builder->table('posts')
             ->select(['posts.*', 'users.name as author_name'])
             ->innerJoin('users', 'author_id', 'users.id')
             ->all();

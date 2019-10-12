@@ -36,7 +36,9 @@ class Auth
             return null;
         }
 
-        return Database::table('users')
+        $builder = \App::resolve('builder');
+        
+        return $builder->table('users')
             ->select(['id', 'name', 'email'])
             ->where('id', '=', static::userId())
             ->limit(1)

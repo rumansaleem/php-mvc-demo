@@ -2,7 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Core\Database;
 use App\Core\Auth;
 
 class LoginController extends Controller
@@ -14,7 +13,7 @@ class LoginController extends Controller
 
     public function login($request)
     {
-        $user = Database::table('users')
+        $user = $this->builder->table('users')
             ->where('email', '=', $request->post('email'))
             ->limit(1)
             ->first();

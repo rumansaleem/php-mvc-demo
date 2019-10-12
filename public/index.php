@@ -1,10 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../app/bootstrap.php';
-
 require_once __DIR__ . '/../vendor/autoload.php';
-
-class_alias(\App\Core\Auth::class, 'Auth');
+require_once __DIR__ . '/../app/bootstrap.php';
 
 $router = \App\Core\Router::getInstance();
 $request = \App\Core\Request::createFromGlobals();
